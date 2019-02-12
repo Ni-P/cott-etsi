@@ -1,7 +1,7 @@
 {
   "name": "web-ohjelmointi",
   "author": "Niko Pinnis",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "main": "bin/wwww",
   "description": "A RESTfull app for renting cottages",

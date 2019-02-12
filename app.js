@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require("passport-local");
-const User = require("./models/user");
+const User = require("./models/User");
 const flash = require('connect-flash');
 
 const indexRouter = require('./routes/index');
@@ -25,7 +25,7 @@ const localDBName = "/cottetsi";
 const resetLocalDB = false; // empty the local DB and populate with initial data
 
 const app = express();
-
+//console.log(keys.mongoURI.remote);
 // mongodb setup
 mongoose.connect(useRemote ? keys.mongoURI.remote:keys.mongoURI.local+localDBName, {useNewUrlParser: true})
     .then(()=>{
