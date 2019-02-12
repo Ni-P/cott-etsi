@@ -1,0 +1,31 @@
+<% include ../partials/header.ejs %>
+
+<div class="body-content">
+    <div class="col s12">
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="/images/<%= reservation.cottage.image%>" alt="cottage image">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <h5><%= reservation.cottage.name %></h5>
+                    <h6><%= reservation.cottage.location %></h6>
+                    <!--<span><%= reservation.cottage.description %></span>-->
+                    <h6>Reserved day: <%= new Date(reservation.date).toDateString() %></h6>
+                    <div class="card-action">
+                        <form method="post" class="">
+                            <!--<label class="flow-text" for="confirm">Please confirm:</label>-->
+                            <h6>Are you sure you wish to cancel <%if(currentUser.admin){%>this<%}else{%>your<%}%> reservation?</h6>
+                            <input class="btn red darken-3 white-text left-align" type="submit" name="confirm" value="confirm">
+                            <!--<div class="card-action right-align">-->
+                            <a href="/reservations/<%= reservation.id %>/show" class="btn orange darken-2 right-align">Go back</a>
+                            <!--</div>-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer.ejs %>

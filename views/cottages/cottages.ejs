@@ -1,0 +1,49 @@
+
+<% include ../partials/header.ejs %>
+
+<div class="cottages-content">
+    <h5 class="center-align">Showing all cottages</h5>
+    <div class="row">
+        <% results.forEach(function(cottage) { %>
+        <div class="col s12 m6 l6 xl4">
+            <div class="card ">
+                <div class="card-image">
+                    <img class="activator" src="images/<%= cottage.image %>" alt="cottage image">
+                    <span class="card-title"><%= cottage.name %></span>
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator"><%= cottage.location %><i class="material-icons right">more_vert</i></span>
+                </div>
+                <div class="card-action">
+                    <div class="row">
+                        <div class="col s6 ">
+                            <p>Price:</p>
+                            <span class="card-title green-text text-darken-3"><%= cottage.price %></span>
+                        </div>
+                        <div class="col s6 right-align">
+                            <a class="btn white-text green darken-3" href="/cottages/<%= cottage.id %>/show">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Description<i class="material-icons right">close</i></span>
+                    <p class="flow-text"><%= cottage.description %></p></div>
+                <% if(currentUser && currentUser.admin) { %>
+                <div class="card-action right-align">
+                    <a class="btn orange darken-2 darken-1" href="/cottages/<%= cottage.id %>/edit">Edit</a>
+                    <a class="btn red darken-1" href="/cottages/<%= cottage.id %>/delete">Delete</a>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <% }); if(currentUser && currentUser.admin) { %>
+            <div class="col s12 l6 xl4">
+                <div class="card-panel center-align">
+                    <a class="btn-large green darken-3" href="/cottages/new">NEW</a>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<% include ../partials/footer.ejs %>

@@ -1,0 +1,120 @@
+:root {
+    --desktop-width: 90%; /* 85% causes trembling when hovering buttons at /cottages with page width: around 1850px*/
+    --mobile-width: 90%;
+    --desktop-breakpoint: 993px;
+}
+
+body {
+    /*padding: 0;*/
+    /*margin: 0;*/
+    font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+    /*padding-bottom: 200px;*/
+}
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+nav {
+    width: 100%;
+    margin: auto;
+}
+footer {
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*margin: 20px auto 0 auto;*/
+    width: 100%;
+}
+.cottages-content {
+    width: var(--mobile-width);
+    margin: auto;
+}
+
+.flash-content{
+    margin: auto;
+    width: var(--mobile-width);
+}
+.form-content{
+    margin: auto;
+    width: var(--mobile-width);
+}
+.body-content{
+    margin: auto;
+    width: var(--mobile-width);
+}
+
+nav {
+    min-height: 80px;
+}
+
+.brand-logo, .sidenav-trigger {
+    font-size: 3rem;
+}
+
+.text-underline {
+    text-underline: #FFFFFF;
+}
+
+@media only screen and (min-width: 993px ){
+    /*body {*/
+        /*font-size: 14px;*/
+    /*}*/
+    body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1 0 auto;
+    }
+    nav,
+    .cottages-content{
+        width: var(--desktop-width);
+    }
+    nav {
+        min-height: 60px;
+    }
+    footer {
+        /*margin: 20px auto 0 auto;*/
+        /*position: static;*/
+        /*bottom: 0;*/
+        width: var(--desktop-width);
+    }
+    .flash-content{
+        margin: auto;
+        width: var(--desktop-width);
+    }
+    .form-content{
+        margin: auto;
+        width: var(--desktop-width);
+    }
+    .body-content{
+        margin: auto;
+        width: var(--desktop-width);
+    }
+    .dropdown-mover {
+        top: -64px;
+        left: 9px;
+    }
+    .dropdown-sizer {
+        min-width: 125px;
+    }
+}
+
+#mobile a {
+    font-size: 2rem;
+}
+#mobile li {
+    margin-bottom: 10px;
+}
+
+footer {
+    /*position: fixed;*/
+    bottom: 0;
+    margin: auto;
+}

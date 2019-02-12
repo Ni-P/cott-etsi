@@ -1,0 +1,25 @@
+<% include ../partials/header.ejs %>
+
+<div class="body-content">
+    <h4 class="center-align">Cottage details</h4>
+    <div class="col s12">
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="/images/<%= cottage.image%>" alt="cottage image">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <h5><%= cottage.name %></h5>
+                    <h6><%= cottage.location %></h6>
+                    <span><%= cottage.description %></span>
+                    <div class="card-action">
+                        <a class="btn orange darken-2" href="/cottages">Go Back</a>
+                        <a class="btn green darken-1 <% if(!currentUser){ %>disabled<%}%>" href="/reservations/<%=cottage.id%>/new"><% if(!currentUser){ %><%="Login to Reserve"%><%}else{%><%="Make Reservation"%><%}%></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer.ejs %>

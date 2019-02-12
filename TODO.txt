@@ -1,0 +1,33 @@
+build front end
+    build html
+    make views
+        landing OK
+        about OK
+        cottages OK
+        login OK
+        register OK
+        reservations OK
+        new cottage Ok FIX image url
+        new reservation OK
+        user management OK
+    tailor css Ok
+    fill out footer OK
+    put more text where apropriate OK
+    finish mobile UI OK
+    make carousel at landing use featured cottages
+
+build back end
+    set up routes
+        index OK
+        create db and schemas OK
+        set User routes OK
+        set Cottage routes OK
+        set Reservation routes OK
+    set db queries OK
+    setup passport and auth code OK
+    make id checks to prevent actions from unathorized users OK
+    put title in res globals OK
+    require users to provide contact details before reservation OK
+
+test app
+deploy app

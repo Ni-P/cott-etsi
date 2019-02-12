@@ -1,0 +1,51 @@
+<% include ../partials/header.ejs %>
+
+<div class="body-content">
+    <%if(currentUser.admin){%>
+    <% if(reservations && reservations.length > 0) { %>
+    <h6>User has the following reservations.</h6>
+    <ul class="collection">
+        <% reservations.forEach((reservation)=>{ %>
+            <li class="collection-item avatar">
+                <img src="/images/<%= reservation.cottage.image %>" alt="cottage image" class="circle">
+                <a href="/reservations/<%= reservation.id %>/show" class="title"><%= reservation.cottage.name %></a>
+                <p>Reserved for: <%= new Date(reservation.date).toDateString() %></p>
+            </li>
+        <% }); %>
+    </ul>
+    <% } else { %>
+    <h6>User has no reservations.</h6>
+    <% } %>
+    <h6>Are you sure you want to delete their account?</h6>
+    <form method="post">
+        <label>Confirm deletion</label>
+        <input type="submit" class="btn red darken-2" value="Confirm">
+        <a href="/users/<%= userId %>/show" class="btn orange darken-2">Go back</a>
+    </form>
+    <%} else {%>
+            <% if(reservations && reservations.length > 0) { %>
+                <h6>You have the following reservations.</h6>
+                <h6>They will be automatically cancelled upon account deletion</h6>
+                <ul class="collection">
+                    <% reservations.forEach((reservation)=>{ %>
+                        <li class="collection-item avatar">
+                            <img src="/images/<%= reservation.cottage.image %>" alt="cottage image" class="circle">
+                            <a href="/reservations/<%= reservation.id %>/show" class="title"><%= reservation.cottage.name %></a>
+                            <p>Reserved for: <%= new Date(reservation.date).toDateString() %></p>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <h6>You don't have any reservations.</h6>
+            <% } %>
+            <h6>Are you sure you want to delete your account? This cannot be reversed.</h6>
+            <form method="post">
+                <label>Confirm deletion</label>
+                <input type="submit" class="btn red darken-2" value="Confirm">
+                <a href="/users/<%= userId %>/show" class="btn orange darken-2">Go back</a>
+            </form>
+    <%}%>
+</div>
+<br>
+
+<% include ../partials/footer.ejs %>

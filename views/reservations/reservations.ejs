@@ -1,0 +1,31 @@
+<% include ../partials/header.ejs %>
+
+<div class="body-content">
+    <h3 class="center-align">Reservations</h3>
+    <%if (reservations.length > 0) {%>
+    <ul class="collection">
+        <% reservations.forEach((reservation)=>{ %>
+        <li class="collection-item avatar">
+            <img src="/images/<%= reservation.cottage.image %>" alt="cottage image" class="circle">
+            <a href="/reservations/<%= reservation.id %>/show" class="title"><%= reservation.cottage.name %></a>
+            <p>Reserved for: <%= new Date(reservation.date).toDateString() %></p>
+            <%if(currentUser && currentUser.admin){%>
+                <p>Made by user: <a href="/users/<%=reservation.user.id%>/show"><%= reservation.user.username %></a></p>
+            <%}%>
+            <a href="/reservations/<%= reservation.id %>/delete" class="secondary-content btn red darken-4">Cancel Reservation</a>
+        </li>
+        <% }); %>
+    </ul>
+        <% } else { %>
+        <div class="center-align">
+            <%if(currentUser && currentUser.admin){%>
+            <h5>There aren't any reservations.</h5>
+                <% } else { %>
+                    <h5>You don't have any reservations.</h5>
+                    <h5>Have a look at our available <a href="/cottages">cottages</a></h5>
+                <% } %>
+        </div>
+        <% } %>
+</div>
+
+<% include ../partials/footer.ejs %>

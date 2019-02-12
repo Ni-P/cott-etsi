@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= siteName %><%= title %></title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/materialize/css/materialize.css" media="screen,projection">
+    <script src="/materialize/js/materialize.min.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+</head>
+<body>
+<header>
+<% if(currentUser) { %>
+    <ul id="nav-dropdown" class="dropdown-content dropdown-mover dropdown-sizer">
+        <% if (currentUser && currentUser.admin) { %>
+            <li><a href="/users/">Users</a></li>
+            <li class="divider"></li>
+        <% } %>
+        <li><a href="/reservations/">Reservations</a></li>
+        <li class="divider"></li>
+            <% if (currentUser && !currentUser.admin) { %>
+            <li><a href="/users/<%= currentUser.id %>/show">Account</a></li>
+                <li class="divider"></li>
+            <% } %>
+        <li><a href="/users/logout">Logout</a></li>
+    </ul>
+<% } %>
+    <nav>
+        <div class="nav-wrapper green darken-3">
+            <a href="/" class="brand-logo"><%= siteName %></a>
+            <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/cottages">Cottages</a></li>
+                <li><a href="/about">About</a></li>
+                <% if (!currentUser) { %>
+                <li><a href="/users/login">Login or Register</a></li>
+                <% } else { %>
+                    <li><a class="dropdown-trigger" href="#!" data-target="nav-dropdown"><%= currentUser.username %><i class="material-icons right">arrow_drop_down</i></a></li>
+                    <% } %>
+            </ul>
+        </div>
+    </nav>
+    <ul class="sidenav" id="mobile" style="width: 350px;">
+        <% if (!currentUser) { %>
+            <li><a class="waves-effect bold" href="/users/login">Login or Register</a></li>
+        <% } else { %>
+            <li><a class="" href="/"><%= currentUser.username %></a></li>
+                <li><div class="divider"></div></li>
+            <li><a class="waves-effect" href="/reservations">Reservations</a></li>
+                <% if (currentUser && currentUser.admin) { %>
+            <li><a class="waves-effect" href="/users/">Users</a></li>
+                <%}else{%>
+                    <li><a class="waves-effect" href="/users/<%= currentUser.id %>/show">Account</a></li>
+                <%}%>
+            <% } %>
+        <li><a href="/cottages">Cottages</a></li>
+        <li><a href="/about">About</a></li>
+    </ul>
+
+    <!--Flash messages-->
+    <% if(error && error.length > 0) { %>
+    <div class="row flash-content">
+        <div class="col s12">
+            <div class="card-panel red darken-1">
+                <span class="white-text"><%= error %></span>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <% if(success && success.length > 0) { %>
+        <div class="row flash-content">
+            <div class="col s12">
+                <div class="card-panel green darken-1">
+                    <span class="white-text"><%= success %></span>
+                </div>
+            </div>
+        </div>
+    <% } %>
+    <% if(warning && warning.length > 0) { %>
+    <div class="row flash-content">
+        <div class="col s12">
+            <div class="card-panel yellow darken-4">
+                <span class="white-text"><%= warning %></span>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</header>
+<main>

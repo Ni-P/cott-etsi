@@ -1,0 +1,66 @@
+<% include ../partials/header.ejs %>
+
+<div class="body-content">
+    <div class="col s12">
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="/images/<%= cottage.image%>" alt="cottage image">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <h5><%= cottage.name %></h5>
+                    <h6><%= cottage.location %></h6>
+                    <span><%= cottage.description %></span>
+                    <div class="card-action">
+                        <form method="post">
+                            <label for="reservasion-day">Select day</label>
+                            <input type="text" class="datepicker" name="reservasionDay">
+                            <input class="btn green darken-3 white-text" type="submit">
+                            <a href="/cottages" class="btn orange darken-2">Go back</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var elems;
+    var instances;
+    const _dates = [];
+    <% dates.forEach((date)=>{%>
+        _dates.push("<%= new Date(date).toDateString() %>");
+    <%});%>
+    // console.log(_dates);
+
+
+    const reservedDays = function(day){
+        // console.log(day);
+        // let testDay = new Date(2019,1,10);
+        //
+        // console.log(_dates[0]);
+        // console.log(day.toDateString())
+
+        return _dates.includes(day.toDateString());
+        // console.log(result);
+
+        // console.log(testDay);
+         // return day === new Date(Date.now() + 3600 * 24 * 1000);
+        // console.log(day.toLocaleString() === testDay.toLocaleString());
+        //  return day.toLocaleString() === testDay.toLocaleString();
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        elems = document.querySelectorAll('.datepicker');
+        instances = M.Datepicker.init(elems, {
+            minDate: new Date(),
+            yearRange: 1,
+            setDefaultDate: true,
+            defaultDate: new Date(),
+            disableDayFn: reservedDays
+        });
+        // instances[0].setDate(new Date());
+});
+</script>
+
+<% include ../partials/footer.ejs %>

@@ -1,0 +1,35 @@
+<% include ./partials/header.ejs %>
+
+<div class="body-content center-align">
+    <h1>Welcome to <%= siteName %></h1>
+    <div class="row">
+        <div class="col s6 center-align">
+            <div class="carousel carousel-slider">
+                <a class="carousel-item" href="#one!"><img src="/images/5817409647_50a0f1bf51_b.jpg"></a>
+                <a class="carousel-item" href="#two!"><img src="/images/5817418723_2bda59f000_b.jpg"></a>
+                <a class="carousel-item" href="#three!"><img src="/images/5817984136_a85f4ab07b_b.jpg"></a>
+            </div>
+        </div>
+        <div class="col s6 center-align">
+            <h4>
+                Many beautifull cottages available for rent
+            </h4>
+            <br>
+            <h5>
+                Find yours <a href="/cottages">now!</a>
+            </h5>
+            <br>
+            <h5>
+                New to our website? Please create your account by clicking <a href="/users/register">here</a>
+            </h5>
+        </div>
+    </div>
+</div>
+<br>
+<script>
+    // var carousel = M.Carousel.init(document.querySelectorAll('.carousel'), {fullWidth: true,indicators:true});
+    var timer = setInterval(function () {
+        document.querySelectorAll('.carousel')[0].M_Carousel.next();
+    }, 2500);
+</script>
+<% include ./partials/footer.ejs %>

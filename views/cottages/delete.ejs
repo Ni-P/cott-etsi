@@ -1,0 +1,25 @@
+<% include ../partials/header.ejs %>
+
+<div class="body-content">
+    <h5 class="center-align">Delete cottage</h5>
+    <% if(reservations.length>0){%>
+    <p>This cottage has the following reservations. removing it will cancel them.</p>
+    <ul class="collection">
+        <% reservations.forEach((reservation)=>{%>
+            <li class="collection-item">
+                Reserved by: <%= reservation.user.username %> for: <%= new Date(reservation.date).toDateString() %>
+            </li>
+        <% }); %>
+    </ul>
+    <% } else { %>
+        <p>No reservations for this cottage.</p>
+    <% } %>
+        <p>Confirm deletion:</p>
+        <form method="post">
+            <input type="submit" class="btn red darken-2" value="Confirm">
+        </form>
+        <br>
+        <a href="/cottages" class="btn orange darken-2">Abort</a>
+</div>
+<br>
+<% include ../partials/footer.ejs %>

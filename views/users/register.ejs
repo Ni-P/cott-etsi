@@ -1,0 +1,63 @@
+
+<% include ../partials/header.ejs %>
+
+<form class="col s12 form-content" method="POST">
+    <div class="row">
+        <div class="input-field col s12">
+            <label for="username">Username<span style="color: red">*</span></label>
+            <input id="username-field" type="text" name="username" class="validate" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <label for="password-field">Password<span style="color: red">*</span></label>
+            <input id="password-field" type="password" name="password" class="validate" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <label for="firstname-field">First Name</label>
+            <input id="firstname-field" type="text" name="firstname" class="validate">
+        </div>
+    <!--</div>-->
+    <!--<div class="row">-->
+        <div class="input-field col s6">
+            <label for="lastname-field">Last Name</label>
+            <input id="lastname-field" type="text" name="lastname" class="validate">
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <label for="address-field">Address</label>
+            <input id="address-field" type="text" name="address" class="validate">
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <label for="postalcode-field">Postal Code</label>
+            <input id="postalcode-field" type="number" name="postalcode" class="validate">
+        </div>
+    <!--</div>-->
+    <!--<div class="row">-->
+        <div class="input-field col s6">
+            <label for="phone-field">Phone Number</label>
+            <input id="phone-field" type="number" name="phone" class="validate">
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <label for="email-field">Email</label>
+            <input id="email-field" type="email" name="email" class="validate">
+        </div>
+    </div>
+    <span><span style="color: red">*</span>Fields are required.</span>
+    <div class="row">
+        <br>
+        <div class="col s12">
+            <input class="btn green darken-3" type="submit" value="Register"/>
+            <a class="btn red darken-1" href="/">Cancel</a>
+        </div>
+    </div>
+</form>
+
+<% include ../partials/footer.ejs %>
